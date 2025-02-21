@@ -22,6 +22,36 @@ Problem Definition:
 		> Use local files 
 
 
+Analysis/Key Features
+
+Linux
+
+The application will utilise a Fork operator to enable multiple clients connecting. This specific operator is only compatible with Linux architecture. This will be achieved by using the VM WSL2
+
+TCP/IP
+
+The TCP/IP stack is a set of protocols used for data to traverse the internet. It requires data to be converted to byte data. We are using TCP over UDP here as we want data to go omni-directionally where UDP is only used for single-direction traffic. Whilst it would be possible to use the faster protocol of UDP exclusively for transmitting song data from the server to the client, this is out of the scope for this project at this time. 
+
+Serialisation
+
+Serialisation is process of converting data into a format can be transmitted. This can be done a variety of ways however in this instance we will be converting into binary - one of the most efficient methods.
+
+Sockets
+
+Sockets are a memory buffer within a file system through which a process can write data to. They allow for bi-directional communication and will be the way our client communicate with the server. The server will continuously check the socket to see if a new packet has been received or that there is one to send. Each client connection will have their own socket.
+
+Multithreading
+
+Multithreading is the process of simultaneously processing multiple sections of code. This is achieved by creating multiple threads that run simultaneously.
+
+Mutex
+
+Mutex / mutual exclusion prevents multiple threads from accessing or modifying a shared variable/section of memory/resource at the same time. In C++ two ways this can be achieved is through using either a lock_guard or unique_lock. Lock_guard automatically protects the critical section of the code until the lock object goes out of scope whereas unique_lock needs to be manually unlocked but can be more versatile.
+
+
+
+
+
 Server Design
 
 		> Will use a fork structure to handle multiple clients.
